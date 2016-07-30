@@ -96,32 +96,7 @@
 							<a class="more" href="#">More  +</a>
 						</div>
 					</div>
-					<div class="subscribe-now">
-						<div class="discount">
-							<a href="#">
-								<div class="save">
-									<p>Save</p>
-									<p>upto</p>
-								</div>
-								<div class="percent">
-									<h2>50%</h2>
-								</div>
-								<div class="clearfix"></div>
-						</div>						
-						<h3 class="sn">subscribe     now</h3>
-							</a>
-					</div><div class="clearfix"></div>
-					<div class="grid-top">
-				<h4>Archives</h4>
-				<ul>
-					<li><a href="single.html">Lorem Ipsum is simply dummy text of the printing  industry. </a></li>
-					<li><a href="single.html">Lorem Ipsum has been the industry's text ever since the 1500s</a></li>
-					<li><a href="single.html">When an unknown printer took a galley scrambled it to make a type  </a> </li>
-					<li><a href="single.html">It has survived not, but also the leap into electronic typesetting</a> </li>
-					<li><a href="single.html">Letraset sheets containing Lorem Ipsum  with desktop publishing </a> </li>
-					<li><a href="single.html">Software like Aldus versionsof Lorem Ipsum.</a> </li>
-				</ul>
-				</div>
+					
 
 				</div>	
 				<div class="clearfix"></div>
