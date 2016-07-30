@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('portal.index');
+});
+
+Route::get('single', function () {
+    return view('portal.single');
+});
+
+
+Route::get('search', function () {
+    return view('portal.search');
+});
+Route::get('countdown', function () {
+    return view('portal.countdown');
 });
