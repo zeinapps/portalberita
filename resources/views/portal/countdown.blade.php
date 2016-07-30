@@ -28,11 +28,11 @@ a.title {
 								<h3>from   around   the   world</h3>
 								<div class="clearfix"></div>
 							</div>
-							<div class="raw">
+		<div class="raw">
 
-            <div id="countdown" class="alert alert-info count-down" style="text-align:center;">
+            <div id="countdown" class="alert alert-danger count-down" style="text-align:center;">
                 <div id="link_keluar" class="download-buttons" style="display:none;">
-                    <a  class="btn btn-danger" href="#">Klik Disini</a>
+                    <a  class="btn btn-danger" href="#" style="color: #fff;background-color: #d9534f;">Klik Disini</a>
                 </div>
 
             </div>
