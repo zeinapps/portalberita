@@ -84,11 +84,11 @@
                     <div class="gallery-images">
                         <div class="course_demo1">
                             <ul id="flexiselDemo1">	
-                                @for ($i = 4; $i <= 7; $i++)   
-                                <li>
-                                    <a href="{{ $galeri[$i]['time'].'/detil/'.$galeri[$i]['title'] }}"><img src="{{ $galeri[$i]['img_tumb'] }}" alt="" style="height:112px;width:180px;"/></a>						
-                                </li>
-                                @endfor
+                                @foreach ($galeri as $item)   
+                                        <li>
+                                            <a href="{{ $item->time.'/detil/'.$item->title }}"><img src="{{ $item->img_tumb }}" alt="" style="height:112px;width:180px;"/></a>						
+                                        </li>
+                                @endforeach
                             </ul>
                         </div>
                         <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
@@ -120,15 +120,7 @@
                             });
                         </script>
                         <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-                    </div>
-                    <div class="course_demo1">
-                        <ul id="flexiselDemo">	
-                            @for ($i = 0; $i <= 3; $i++)   
-                                <li>
-                                    <a href="{{ $galeri[$i]['time'].'/detil/'.$galeri[$i]['title'] }}"><img src="{{ $galeri[$i]['img_tumb'] }}" alt="" style="height:112px;width:180px;"/></a>						
-                                </li>
-                            @endfor
-                        </ul>
+                    
                     </div>
                     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
                     <script type="text/javascript">
@@ -168,24 +160,13 @@
                         <div class="clearfix"></div>
                     </div>	 
                     <div class="tech-news-grids">
-                        <div class="left-tech-news">
-                            @for ($i = 0; $i <= 1; $i++)
+                        @foreach ($internasional as $item) 
                             <div class="tech-news-grid span_66">
-                                <a href="{{ $internasional[$i]['time'].'/detil/'.$internasional[$i]['title'] }}">{{ $internasional[$i]['title'] }}</a>
-                                <p>{{  str_limit( strip_tags($internasional[$i]['konten']), $limit = 100, $end = '...') }}</p>
-                                <p>by <a href="">{{ $internasional[$i]['penulis'] }}</a></p>
+                                <a href="{{ $item->time.'/detil/'.$item->title }}">{{ $item->title }}</a>
+                                <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }}</p>
+                                <p>by <a href="">{{ $item->penulis }}</a></p>
                             </div>
-                            @endfor
-                        </div>
-                        <div class="right-tech-news">
-                            @for ($i = 2; $i <= 3; $i++)
-                            <div class="tech-news-grid span_66">
-                                <a href="{{ $internasional[$i]['time'].'/detil/'.$internasional[$i]['title'] }}">{{ $internasional[$i]['title'] }}</a>
-                                <p>{{  str_limit( strip_tags($internasional[$i]['konten']), $limit = 100, $end = '...') }}</p>
-                                <p>by <a href="">{{ $internasional[$i]['penulis'] }}</a></p>
-                            </div>
-                            @endfor
-                        </div>
+                        @endforeach
                         <div class="clearfix"></div>
                     </div>
                 </div>

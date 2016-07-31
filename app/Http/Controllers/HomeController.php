@@ -27,89 +27,111 @@ class HomeController extends Controller
      */
     public function index(Request $request) {
         
-//        $limit = $request->limit ? $request->limit : 3;
-     
-        $berita_pilihan = Berita::where('is_pilihan',1)
-        ->orderBy('time', 'desc')
-        ->take(4)
-        ->get()->toJson();
-        Storage::disk('local')->put('json/berita_pilihan.json',  $berita_pilihan);
-        $d= Storage::get('json/berita_pilihan.json');
-        dd($d);
-        die;
+
         
-        $berita_terbaru = Berita::orderBy('time', 'desc')
-        ->take(3)
-        ->get();
-        
-        $berita = Berita::where('kategori','berita')
-        ->orderBy('time', 'desc')
-        ->take(3)
-        ->get();
-        
-        $galeri = Berita::select('img_tumb','url','time','title')
-        ->orderBy(DB::raw('RAND()'))
-        ->take(8)
-        ->get();
-        
-        $internasional = Berita::where('kategori','internasional')
-        ->orderBy('time', 'desc')
-        ->take(4)
-        ->get();
-        
-        $olahraga = Berita::where('kategori','olahraga')
-        ->orderBy('time', 'desc')
-        ->take(4)
-        ->get();
-        
-        $politik = Berita::where('kategori','politik')
-        ->orderBy('time', 'desc')
-        ->take(4)
-        ->get();
+//        $berita_terbaru = Berita::orderBy('time', 'desc')
+//        ->take(3)
+//        ->get()
+//        ->toJson();
+//        Storage::put('json/home/berita_terbaru.json',  $berita_terbaru);
+//        
+//        $berita = Berita::where('kategori','berita')
+//        ->orderBy('time', 'desc')
+//        ->take(3)
+//        ->get()
+//        ->toJson();
+//        Storage::put('json/home/berita.json',  berita);
+//        
+//        $galeri = Berita::select('img_tumb','url','time','title')
+//        ->orderBy(DB::raw('RAND()'))
+//        ->take(8)
+//        ->get()
+//        ->toJson();
+//        Storage::put('json/home/galeri.json',  $galeri);
+//        
+//        $internasional = Berita::where('kategori','internasional')
+//        ->orderBy('time', 'desc')
+//        ->take(4)
+//        ->get()
+//        ->toJson();
+//        Storage::put('json/home/internasional.json',  $internasional);
+//        
+//        $olahraga = Berita::where('kategori','olahraga')
+//        ->orderBy('time', 'desc')
+//        ->take(4)
+//        ->get()
+//        ->toJson();
+//        Storage::put('json/home/olahraga.json',  $olahraga);
+//        
+//        $politik = Berita::where('kategori','politik')
+//        ->orderBy('time', 'desc')
+//        ->take(4)
+//        ->get()
+//        ->toJson();
+//        Storage::put('json/home/politik.json',  $politik);
         
         $data = [
-            'berita_pilihan' => $berita_pilihan,
-            'berita_terbaru' => $berita_terbaru,
-            'berita' => $berita,
-            'internasional' => $internasional->toArray(),
-            'politik' => $politik,
-            'olahraga' => $olahraga,
-            'galeri' => $galeri->toArray(),
+            'berita_pilihan' => json_decode(Storage::get('json/home/berita_pilihan.json')),
+            'berita_terbaru' => json_decode(Storage::get('json/home/berita_terbaru.json')),
+            'berita' => json_decode(Storage::get('json/home/berita.json')),
+            'internasional' => json_decode(Storage::get('json/home/internasional.json')),
+            'politik' => json_decode(Storage::get('json/home/politik.json')),
+            'olahraga' => json_decode(Storage::get('json/home/olahraga.json')),
+            'galeri' => json_decode(Storage::get('json/home/galeri.json')),
         ];
         return view('portal.index', $data);
         
     }
     
-    public function tags(Request $request,$tag) {
+    public function generateJsonHome() {
         
-        $limit = $request->limit ? $request->limit : 10;
-     
-        $query = Pertanyaan::with('tags','jawabanCount')
-                ->join('tags', 'tags.pertanyaan_id', '=', 'pertanyaan.id')
-                ->join('users', 'pertanyaan.user_id', '=', 'users.id')
-                ->select('pertanyaan.*','users.id as user_id','users.name','users.email')
-                ->orderBy('pertanyaan.id', 'desc')
-                ->where('tags.tag','=',$tag);
-        if($request->q){
-            $query = $query->where('judul','like','%' .$request->q. '%')
-                    ->orWhere('pertanyaan','like','%' .$request->q. '%');
-        }
+        $berita_pilihan = Berita::where('is_pilihan',1)
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get()->toJson();
+        Storage::put('json/home/berita_pilihan.json',  $berita_pilihan);
+
+        $berita_terbaru = Berita::orderBy('time', 'desc')
+        ->take(3)
+        ->get()
+        ->toJson();
+        Storage::put('json/home/berita_terbaru.json',  $berita_terbaru);
         
-        $query = $query->paginate($limit);
+        $berita = Berita::where('kategori','berita')
+        ->orderBy('time', 'desc')
+        ->take(3)
+        ->get()
+        ->toJson();
+        Storage::put('json/home/berita.json',  $berita);
         
-        $Data = $query->toArray();
-//        dd($Data);
-        $page = $request->page ? $request->page : 1;
-        $no = ($page-1) * $limit + 1;
+        $galeri = Berita::select('img_tumb','url','time','title')
+        ->orderBy(DB::raw('RAND()'))
+        ->take(8)
+        ->get()
+        ->toJson();
+        Storage::put('json/home/galeri.json',  $galeri);
         
-        $data = [
-            'data' => $Data['data'],
-            'pagination' => $query,
-            'url_search' => '/pertanyaan/tags/'.$tag,
-            'q' => $request->q ? $request->q : '',
-            'no' => $no,
-        ];
-        return view('home', $data);
+        $internasional = Berita::where('kategori','internasional')
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get()
+        ->toJson();
+        Storage::put('json/home/internasional.json',  $internasional);
+        
+        $olahraga = Berita::where('kategori','olahraga')
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get()
+        ->toJson();
+        Storage::put('json/home/olahraga.json',  $olahraga);
+        
+        $politik = Berita::where('kategori','politik')
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get()
+        ->toJson();
+        Storage::put('json/home/politik.json',  $politik);
+        
         
     }
     

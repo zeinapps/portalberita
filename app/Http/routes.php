@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-
+Route::get('/generatejsonhome', 'HomeController@generateJsonHome');
 //Route::get('/', function () {
 //    return view('portal.index');
 //});
