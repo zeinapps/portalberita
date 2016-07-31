@@ -27,49 +27,6 @@ class HomeController extends Controller
      */
     public function index(Request $request) {
         
-
-        
-//        $berita_terbaru = Berita::orderBy('time', 'desc')
-//        ->take(3)
-//        ->get()
-//        ->toJson();
-//        Storage::put('json/home/berita_terbaru.json',  $berita_terbaru);
-//        
-//        $berita = Berita::where('kategori','berita')
-//        ->orderBy('time', 'desc')
-//        ->take(3)
-//        ->get()
-//        ->toJson();
-//        Storage::put('json/home/berita.json',  berita);
-//        
-//        $galeri = Berita::select('img_tumb','url','time','title')
-//        ->orderBy(DB::raw('RAND()'))
-//        ->take(8)
-//        ->get()
-//        ->toJson();
-//        Storage::put('json/home/galeri.json',  $galeri);
-//        
-//        $internasional = Berita::where('kategori','internasional')
-//        ->orderBy('time', 'desc')
-//        ->take(4)
-//        ->get()
-//        ->toJson();
-//        Storage::put('json/home/internasional.json',  $internasional);
-//        
-//        $olahraga = Berita::where('kategori','olahraga')
-//        ->orderBy('time', 'desc')
-//        ->take(4)
-//        ->get()
-//        ->toJson();
-//        Storage::put('json/home/olahraga.json',  $olahraga);
-//        
-//        $politik = Berita::where('kategori','politik')
-//        ->orderBy('time', 'desc')
-//        ->take(4)
-//        ->get()
-//        ->toJson();
-//        Storage::put('json/home/politik.json',  $politik);
-        
         $data = [
             'berita_pilihan' => json_decode(Storage::get('json/home/berita_pilihan.json')),
             'berita_terbaru' => json_decode(Storage::get('json/home/berita_terbaru.json')),
@@ -78,6 +35,7 @@ class HomeController extends Controller
             'politik' => json_decode(Storage::get('json/home/politik.json')),
             'olahraga' => json_decode(Storage::get('json/home/olahraga.json')),
             'galeri' => json_decode(Storage::get('json/home/galeri.json')),
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
         ];
         return view('portal.index', $data);
         
@@ -106,7 +64,7 @@ class HomeController extends Controller
         
         $galeri = Berita::select('img_tumb','url','time','title')
         ->orderBy(DB::raw('RAND()'))
-        ->take(8)
+        ->take(4)
         ->get()
         ->toJson();
         Storage::put('json/home/galeri.json',  $galeri);
@@ -132,6 +90,23 @@ class HomeController extends Controller
         ->toJson();
         Storage::put('json/home/politik.json',  $politik);
         
+		$time = time();
+        $views = Berita::where('time','>', $time-(3600*7*24))
+        ->orderBy('views', 'desc')
+        ->take(5)
+        ->get()
+        ->toJson();
+		
+		$views = Berita::where('time','>', $time-(3600*7*24))
+        ->orderBy('views', 'desc')
+        ->take(5)
+        ->get();
+		
+		$sidebar = [
+			'views' => $views,
+		];
+		
+        Storage::put('json/sidebar/sidebar.json',  json_encode($sidebar));
         
     }
     
