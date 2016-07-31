@@ -20,7 +20,7 @@
                     @foreach ($berita_pilihan as $item)                                                                    
                     <li><img src="{{ $item->img }}" alt="" >
                         <div class="breaking-news-title">
-                            <a href="/{{ $item->time }}/{{ $item->title }}">{{ $item->title }}</a>
+                            <a href="/{{ $item->time }}/detil/{{ $item->title }}">{{ $item->title }}</a>
                         </div>
                     </li>
                     @endforeach
@@ -40,17 +40,17 @@
             <div class="left-posts">
                 <div class="world-news">
                     <div class="main-title-head">
-                        <h3>Berita Terbaru</h3>
+                        <h3>Info Terbaru</h3>
                         <a href="singlepage.html">More  +</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="world-news-grids">
                         @foreach ($berita_terbaru as $item)   
                             <div class="world-news-grid">
-                                <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" />
-                                <a href="/{{ $item->time }}/{{ $item->title }}" class="title">{{ $item->title }}</a>
+                                <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" style="height:112px;width:180px;"/>
+                                <a href="/{{ $item->time }}/detil/{{ $item->title }}" class="title">{{ $item->title }}</a>
                                 <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }} </p>
-                                <a href="/{{ $item->time }}/{{ $item->title }}">Read More</a>
+                                <a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a>
                             </div>
                         @endforeach
                         
@@ -59,53 +59,36 @@
                 </div>
                 <div class="latest-articles">
                     <div class="main-title-head">
-                        <h3>latest    articles</h3>
+                        <h3>Berita</h3>
                         <a href="singlepage.html">More  +</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="world-news-grids">
+                        @foreach ($berita as $item)   
                         <div class="world-news-grid">
-                            <img src="images/a1.jpg" alt="" />
-                            <a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-                            <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                            <a href="singlepage.html">Read More</a>
+                            <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" style="height:112px;width:180px;" />
+                            <a href="/{{ $item->time }}/detil/{{ $item->title }}" class="title">{{ $item->title }}</a>
+                            <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }} </p>
+                            <a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a>
                         </div>
-                        <div class="world-news-grid">
-                            <img src="images/a2.jpg" alt="" />
-                            <a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-                            <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                            <a href="singlepage.html">Read More</a>
-                        </div>
-                        <div class="world-news-grid">
-                            <img src="images/a3.jpg" alt="" />
-                            <a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-                            <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                            <a href="singlepage.html">Read More</a>
-                        </div>
+                        @endforeach
                         <div class="clearfix"></div>
                     </div>
                 </div>
                 <div class="gallery">
                     <div class="main-title-head">
-                        <h3>gallery</h3>
+                        <h3>Galeri</h3>
                         <a href="#">More  +</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="gallery-images">
                         <div class="course_demo1">
                             <ul id="flexiselDemo1">	
+                                @for ($i = 4; $i <= 7; $i++)   
                                 <li>
-                                    <a href="single.html"><img src="images/g1.jpg" alt="" /></a>						
+                                    <a href="{{ $galeri[$i]['time'].'/detil/'.$galeri[$i]['title'] }}"><img src="{{ $galeri[$i]['img_tumb'] }}" alt="" style="height:112px;width:180px;"/></a>						
                                 </li>
-                                <li>
-                                    <a href="single.html"><img src="images/g2.jpg" alt="" /></a>
-                                </li>	
-                                <li>
-                                    <a href="single.html"><img src="images/g3.jpg" alt="" /></a>
-                                </li>	
-                                <li>
-                                    <a href="single.html"><img src="images/g4.jpg" alt="" /></a>
-                                </li>	
+                                @endfor
                             </ul>
                         </div>
                         <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
@@ -140,18 +123,11 @@
                     </div>
                     <div class="course_demo1">
                         <ul id="flexiselDemo">	
-                            <li>
-                                <a href="single.html"><img src="images/g4.jpg" alt="" /></a>							
-                            </li>
-                            <li>
-                                <a href="single.html"><img src="images/g5.jpg" alt="" /></a>
-                            </li>	
-                            <li>
-                                <a href="single.html"><img src="images/g6.jpg" alt="" /></a>
-                            </li>	
-                            <li>
-                                <a href="single.html"><img src="images/g1.jpg" alt="" /></a>
-                            </li>	
+                            @for ($i = 0; $i <= 3; $i++)   
+                                <li>
+                                    <a href="{{ $galeri[$i]['time'].'/detil/'.$galeri[$i]['title'] }}"><img src="{{ $galeri[$i]['img_tumb'] }}" alt="" style="height:112px;width:180px;"/></a>						
+                                </li>
+                            @endfor
                         </ul>
                     </div>
                     <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
@@ -187,77 +163,54 @@
                 </div>
                 <div class="tech-news">
                     <div class="main-title-head">
-                        <h3>tech     news</h3>
+                        <h3>internasional</h3>
                         <a href="singlepage.html">More  +</a>
                         <div class="clearfix"></div>
-                    </div>	
+                    </div>	 
                     <div class="tech-news-grids">
                         <div class="left-tech-news">
+                            @for ($i = 0; $i <= 1; $i++)
                             <div class="tech-news-grid span_66">
-                                <a href="singlepage.html">Lorem ipsum dolor sit amet conse ctetur adipiscing elit  </a>
-                                <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ... </p>
-                                <p>by<a href="#">John Doe </a>  |  29 comments</p>
+                                <a href="{{ $internasional[$i]['time'].'/detil/'.$internasional[$i]['title'] }}">{{ $internasional[$i]['title'] }}</a>
+                                <p>{{  str_limit( strip_tags($internasional[$i]['konten']), $limit = 100, $end = '...') }}</p>
+                                <p>by <a href="">{{ $internasional[$i]['penulis'] }}</a></p>
                             </div>
-                            <div class="tech-news-grid">
-                                <a href="singlepage.html">Lorem ipsum dolor sit amet conse ctetur adipiscing elit  </a>
-                                <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ... </p>
-                                <p>by<a href="#">John Doe </a>  |  29 comments</p>
-                            </div>
+                            @endfor
                         </div>
                         <div class="right-tech-news">
+                            @for ($i = 2; $i <= 3; $i++)
                             <div class="tech-news-grid span_66">
-                                <a href="singlepage.html">Lorem ipsum dolor sit amet conse ctetur adipiscing elit  </a>
-                                <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ... </p>
-                                <p>by<a href="#">John Doe </a>  |  29 comments</p>
+                                <a href="{{ $internasional[$i]['time'].'/detil/'.$internasional[$i]['title'] }}">{{ $internasional[$i]['title'] }}</a>
+                                <p>{{  str_limit( strip_tags($internasional[$i]['konten']), $limit = 100, $end = '...') }}</p>
+                                <p>by <a href="">{{ $internasional[$i]['penulis'] }}</a></p>
                             </div>
-                            <div class="tech-news-grid">
-                                <a href="singlepage.html">Lorem ipsum dolor sit amet conse ctetur adipiscing elit  </a>
-                                <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor ... </p>
-                                <p>by<a href="#">John Doe </a>  |  29 comments</p>
-                            </div>
+                            @endfor
                         </div>
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
+            
             <div class="right-posts">
                 <div class="desk-grid">
-                    <h3>FROM   THE   desk</h3>
+                    <h3>Politik</h3>
+                    @foreach ($politik as $item)   
                     <div class="desk">
-                        <a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit </a>
-                        <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                        <p><a href="singlepage.html">Read More</a><span>3 hours ago</span></p>
+                        <a href="/{{ $item->time }}/detil/{{ $item->title }}" class="title">{{ $item->title }}</a>
+                        <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }}</p>
+                        <p><a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a><span>{{ date('d/m/Y H:i', $item->time+(7*3600) ) }}</span></p>
                     </div>
-                    <div class="desk">
-                        <a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit </a>
-                        <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                        <p><a href="singlepage.html">Read More</a><span>3 hours ago</span></p>
-                    </div>
-                    <div class="desk">
-                        <a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit </a>
-                        <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                        <p><a href="singlepage.html">Read More</a><span>3 hours ago</span></p>
-                    </div>
+                    @endforeach
                     <a class="more" href="singlepage.html">More  +</a>
                 </div>
                 <div class="editorial">
-                    <h3>editorial</h3>
+                    <h3>olahraga</h3>
+                    @foreach ($olahraga as $item)
                     <div class="editor">
-                        <a href="single.html"><img src="images/e1.jpg" alt="" /></a>
-                        <a href="single.html">Lorem ipsum dolor sit amet con se cte tur adipiscing elit</a>
+                        <a href="/{{ $item->time }}/detil/{{ $item->title }}"><img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" /></a>
+                        <a href="/{{ $item->time }}/detil/{{ $item->title }}">{{ $item->title }}</a>
                     </div>
-                    <div class="editor">
-                        <a href="single.html"><img src="images/e2.jpg" alt="" /></a>
-                        <a href="single.html">Lorem ipsum dolor sit amet con se cte tur adipiscing elit</a>
-                    </div>
-                    <div class="editor">
-                        <a href="single.html"><img src="images/e1.jpg" alt="" /></a>
-                        <a href="single.html">Lorem ipsum dolor sit amet con se cte tur adipiscing elit</a>
-                    </div>
-                    <div class="editor">
-                        <a href="single.html"><img src="images/e3.jpg" alt="" /></a>
-                        <a href="single.html">Lorem ipsum dolor sit amet con se cte tur adipiscing elit</a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="clearfix"></div>	

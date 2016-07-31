@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berita;
-
+use DB;
 
 class HomeController extends Controller
 {
@@ -31,17 +31,47 @@ class HomeController extends Controller
         $berita_pilihan = Berita::where('is_pilihan',1)
         ->orderBy('time', 'desc')
         ->take(4)
-        ->get();
+        ->get()->toJson();
+        
+        die;
         
         $berita_terbaru = Berita::orderBy('time', 'desc')
         ->take(3)
         ->get();
         
-//        dd($berita_pilihan);
+        $berita = Berita::where('kategori','berita')
+        ->orderBy('time', 'desc')
+        ->take(3)
+        ->get();
+        
+        $galeri = Berita::select('img_tumb','url','time','title')
+        ->orderBy(DB::raw('RAND()'))
+        ->take(8)
+        ->get();
+        
+        $internasional = Berita::where('kategori','internasional')
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get();
+        
+        $olahraga = Berita::where('kategori','olahraga')
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get();
+        
+        $politik = Berita::where('kategori','politik')
+        ->orderBy('time', 'desc')
+        ->take(4)
+        ->get();
         
         $data = [
             'berita_pilihan' => $berita_pilihan,
             'berita_terbaru' => $berita_terbaru,
+            'berita' => $berita,
+            'internasional' => $internasional->toArray(),
+            'politik' => $politik,
+            'olahraga' => $olahraga,
+            'galeri' => $galeri->toArray(),
         ];
         return view('portal.index', $data);
         
