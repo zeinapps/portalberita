@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Berita;
 use DB;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -32,7 +33,9 @@ class HomeController extends Controller
         ->orderBy('time', 'desc')
         ->take(4)
         ->get()->toJson();
-        
+        Storage::disk('local')->put('json/berita_pilihan.json',  $berita_pilihan);
+        $d= Storage::get('json/berita_pilihan.json');
+        dd($d);
         die;
         
         $berita_terbaru = Berita::orderBy('time', 'desc')
