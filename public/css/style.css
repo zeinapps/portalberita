@@ -292,11 +292,11 @@ h5.breaking {
 	background:rgba(36, 34, 36, 0.68);
 	bottom: 3px;
 	z-index: 999;
-	width: 81%;
+	width: 100%;
 	left: 4px;
-	padding: 0.5em 10em;
+	padding: 0.5em 5em;
 }
-.breaking-news-title p {
+.breaking-news-title a {
 	color:#fff;
 	font-size:1em;
 	font-weight:normal;
@@ -318,7 +318,8 @@ h5.breaking {
 .conference-rslide img {
 	display: block;
 	float: left;
-	width: 100%;
+	width: 780px;
+	height: 380px;
 	border: 4px solid #000;
 }
 .rslides_tabs {

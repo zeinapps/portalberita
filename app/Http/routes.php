@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('portal.index');
-});
+Route::get('/', 'HomeController@index');
+
+//Route::get('/', function () {
+//    return view('portal.index');
+//});
 
 Route::get('single', function () {
     return view('portal.single');
