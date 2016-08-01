@@ -110,22 +110,20 @@ class HomeController extends Controller
         
     }
     
-    public function show(Request $request, $id) {
-        $query = Pertanyaan::with('tags','jawabanUserAll','jawabanCount')
-                ->join('users', 'pertanyaan.user_id', '=', 'users.id')
-                ->select('pertanyaan.*','users.id as user_id','users.name','users.email')
-                ->find($id);
+    public function show(Request $request, $time, $title) {
+        $query = Berita::where('time',$time)->first();
         
         if(!$query){
-            return redirect('home');
+            return redirect('/');
         }
-        
+       
         $query->views = $query->views+1;
         $query->save();
         $data = [
-            'data' => $query->toArray(),
+            'data' => $query,
+			'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
         ];
-        return view('show', $data);
+        return view('portal.single', $data);
         
     }
     

@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/generatejsonhome', 'HomeController@generateJsonHome');
+Route::get('/{time}/detil/{title}', 'HomeController@show');
 //Route::get('/', function () {
 //    return view('portal.index');
 //});
