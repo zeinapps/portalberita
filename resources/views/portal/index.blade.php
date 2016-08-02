@@ -41,7 +41,7 @@
                 <div class="world-news">
                     <div class="main-title-head">
                         <h3>Info Terbaru</h3>
-                        <a href="singlepage.html">More  +</a>
+                        <a class="more" href="/terbaru">Selengkapnya  +</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="world-news-grids">
@@ -60,7 +60,7 @@
                 <div class="latest-articles">
                     <div class="main-title-head">
                         <h3>Berita</h3>
-                        <a href="singlepage.html">More  +</a>
+                        <a class="more" href="/berita/kategori">Selengkapnya  +</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="world-news-grids">
@@ -78,7 +78,7 @@
                 <div class="gallery">
                     <div class="main-title-head">
                         <h3>Galeri</h3>
-                        <a href="#">More  +</a>
+                        <!-- <a href="singlepage.html">More  +</a> -->
                         <div class="clearfix"></div>
                     </div>
                     <div class="gallery-images">
@@ -156,7 +156,7 @@
                 <div class="tech-news">
                     <div class="main-title-head">
                         <h3>internasional</h3>
-                        <a href="singlepage.html">More  +</a>
+                        <a class="more" href="/internasional/kategori">Selengkapnya  +</a>
                         <div class="clearfix"></div>
                     </div>	 
                     <div class="tech-news-grids">
@@ -164,7 +164,7 @@
                             <div class="tech-news-grid span_66">
                                 <a href="{{ $item->time.'/detil/'.$item->title }}">{{ $item->title }}</a>
                                 <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }}</p>
-                                <p>by <a href="">{{ $item->penulis }}</a></p>
+                                <p style="color:#cf0000" >by {{ $item->penulis }}</p>
                             </div>
                         @endforeach
                         <div class="clearfix"></div>
@@ -182,7 +182,7 @@
                         <p><a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a><span>{{ date('d/m/Y H:i', $item->time+(7*3600) ) }}</span></p>
                     </div>
                     @endforeach
-                    <a class="more" href="singlepage.html">More  +</a>
+                    <a class="more" href="/politik/kategori">Selengkapnya  +</a>
                 </div>
                 <div class="editorial">
                     <h3>olahraga</h3>
@@ -192,6 +192,7 @@
                         <a href="/{{ $item->time }}/detil/{{ $item->title }}">{{ $item->title }}</a>
                     </div>
                     @endforeach
+					<a class="more" href="/olahraga/kategori">Selengkapnya  +</a>
                 </div>
             </div>
             <div class="clearfix"></div>	

@@ -32,7 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-left">
 					<div class="logo">
 						<a href="index.html">
-						<h6>Portal Berita Nasional</h6>
+						<h6>Portal Berita Dunia</h6>
 							<h1>7Ready<span>.com</span></h1>
 						</a>
 					</div>
@@ -45,8 +45,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-right">
 					
 					<div class="search">
-						<form>
-							<input type="text" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
+						<form action="/terbaru" methode="GET">
+							<input name="q" type="text" value="@if(isset($q)){{$q}}@else{{Request::old('q')}}@endif" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}"/>
 							<input type="submit" value="">
 						</form>
 					</div>
@@ -57,8 +57,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<span class="menu"></span>
 			<div class="menu-strip">
 				<ul>           
-					<li><a href="index.html">Home</a></li>
-					<li><a href="sports.html">sports</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/berita/kategori">Kabar</a></li>
+					<li><a href="/olahraga/kategori">Olah raga</a></li>
+					<li><a href="/internasional/kategori">Internasional</a></li>
+					<li><a href="/politik/kategori">Politik</a></li>
+					<li><a href="/Ekonomi/kategori">Ekonomi</a></li>
+					<li><a href="/Nasional/kategori">Nasional</a></li>
+					<li><a href="/Hiburan/kategori">Hiburan</a></li>
 				</ul>
 			</div>
 			<!-- script for menu -->

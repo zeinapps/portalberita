@@ -6,7 +6,7 @@
 				
 				<div class="popular mpopular">
 					<div class="main-title-head">
-						<h5>populer</h5>
+						<h5>Banyak dibaca</h5>
 						<div class="clearfix"></div>
 					</div>		
 					<div class="popular-news">
@@ -16,7 +16,7 @@
 							<p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }}<a href="/{{ $item->time }}/detil/{{ $item->title }}"> Read More</a></p>
 						</div>
 					@endforeach
-						<a class="more" href="#"> More  +</a>
+						<a class="more" href="/terpopuler">Selengkapnya  +</a>
 					</div>
 				</div>
 					

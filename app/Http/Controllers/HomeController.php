@@ -25,23 +25,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request) {
-        
-        $data = [
-            'berita_pilihan' => json_decode(Storage::get('json/home/berita_pilihan.json')),
-            'berita_terbaru' => json_decode(Storage::get('json/home/berita_terbaru.json')),
-            'berita' => json_decode(Storage::get('json/home/berita.json')),
-            'internasional' => json_decode(Storage::get('json/home/internasional.json')),
-            'politik' => json_decode(Storage::get('json/home/politik.json')),
-            'olahraga' => json_decode(Storage::get('json/home/olahraga.json')),
-            'galeri' => json_decode(Storage::get('json/home/galeri.json')),
-            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
-        ];
-        return view('portal.index', $data);
-        
-    }
-    
-    public function generateJsonHome() {
+	 public function generateJsonHome() {
         
         $berita_pilihan = Berita::where('is_pilihan',1)
         ->orderBy('time', 'desc')
@@ -110,6 +94,80 @@ class HomeController extends Controller
         
     }
     
+	 
+    public function index(Request $request) {
+        
+        $data = [
+            'berita_pilihan' => json_decode(Storage::get('json/home/berita_pilihan.json')),
+            'berita_terbaru' => json_decode(Storage::get('json/home/berita_terbaru.json')),
+            'berita' => json_decode(Storage::get('json/home/berita.json')),
+            'internasional' => json_decode(Storage::get('json/home/internasional.json')),
+            'politik' => json_decode(Storage::get('json/home/politik.json')),
+            'olahraga' => json_decode(Storage::get('json/home/olahraga.json')),
+            'galeri' => json_decode(Storage::get('json/home/galeri.json')),
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+        ];
+        return view('portal.index', $data);
+        
+    }
+    
+	public function kategori(Request $request, $kategori) {
+	
+		$query = Berita::where('kategori',$kategori)
+        ->orderBy('time', 'desc')
+        ->paginate(12);
+		
+		$Data = $query->toArray();
+		$data = [
+			'data' => $Data['data'],
+			'pagination' => $query,
+			'title' => 'Kategori: '.$kategori,
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+        ];
+		return view('portal.list', $data);
+	}
+	
+	public function terbaru(Request $request) {
+	
+		$query = Berita::orderBy('time', 'desc');
+		$title = 'Berita Terbaru';
+		$q= '';
+		if($request->q){
+            $query = $query->where('title','like','%' .$request->q. '%')
+                    ->orWhere('konten','like','%' .$request->q. '%');
+			$title = 'Cari: '.$request->q;
+			$q = $request->q;
+        }
+        $query = $query->paginate(12);
+		
+		$Data = $query->toArray();
+		$data = [
+			'data' => $Data['data'],
+			'pagination' => $query,
+			'title' => $title,
+			'q' => $q,
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+        ];
+		return view('portal.list', $data);
+	}
+	
+	public function terpopuler(Request $request) {
+	
+		$query = Berita::orderBy('views', 'desc');
+		$title = 'Banyak dibaca';
+		
+        $query = $query->paginate(12);
+		
+		$Data = $query->toArray();
+		$data = [
+			'data' => $Data['data'],
+			'pagination' => $query,
+			'title' => $title,
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+        ];
+		return view('portal.list', $data);
+	}
+   
     public function show(Request $request, $time, $title) {
         $query = Berita::where('time',$time)->first();
         
