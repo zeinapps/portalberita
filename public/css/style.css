@@ -1434,6 +1434,10 @@ span {
 	margin-bottom: 10px;
 }
 
+#bx_polong{
+	display:none;
+}
+
 .singlepage p {
 	float: none;
 	width: 100%;
