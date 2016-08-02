@@ -12,12 +12,13 @@
 				</ul>
 			</div>
 			<div class="singlepage">
-							<a href="#"><img src="{{ $data->img }}" /></a>
+							<a href="{{ $data->img }}"><img class="fix100" src="{{ $data->img }}" /></a>
+						
 							{!! $data->konten !!}
-							<br>
+							
 							sumber: {{ $data->sumber }}
 							<br>
-							link: <a href="{{ $data->url }}" >klik disini</a>
+							link: <a href="{{ $data->url }}" target="_blank">klik disini</a>
 							<div class="clearfix"> </div>
 						</div>
 						

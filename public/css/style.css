@@ -1424,8 +1424,16 @@ span {
 }
 .singlepage img {
 	float: none;
-	width:100%;
+	display:none;
 }
+
+.singlepage img.fix100 {
+	float: left;
+	width:100%;
+	display:block;
+	margin-bottom: 10px;
+}
+
 .singlepage p {
 	float: none;
 	width: 100%;
