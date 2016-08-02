@@ -218,13 +218,21 @@ class HomeController extends Controller
         return $this->show($request, $request->pertanyaan_id);
     }
     
-    public function tes() {
-        $data = [
-                    'error' => 'tes email',
-                ];
-                Mail::send('emailbug',$data, function ($m) {
-                        $m->to('zein@jayantara.co.id', 'Zein')->subject('Error 7Ready.com');
-                });
-        return redirect('home');      
+    public function views() {
+        $views = Berita::select(DB::raw("SUM(views) as count"))
+	    	    ->get();
+				
+		$count_berita = Berita::count();
+		
+		$list = DB::table("listurl")
+	    ->select(DB::raw("count(*) as count"))
+	    ->get();
+				
+		$data = [
+			'views' => $views,
+			'jml_berita' => $count_berita,
+			'list' => $list,
+		];
+		return response()->json($data);
     }
 }

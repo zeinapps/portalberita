@@ -17,6 +17,7 @@ Route::get('/{time}/detil/{title}', 'HomeController@show');
 Route::get('/{kategori}/kategori', 'HomeController@kategori');
 Route::get('/terbaru', 'HomeController@terbaru');
 Route::get('/terpopuler', 'HomeController@terpopuler');
+Route::get('/api/views', 'HomeController@views');
 
 
 //Route::get('/', function () {
