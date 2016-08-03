@@ -27,8 +27,7 @@ class HomeController extends Controller
      */
 	 public function generateJsonHome() {
         
-        $berita_pilihan = Berita::where('is_pilihan',1)
-        ->orderBy('time', 'desc')
+        $berita_pilihan = Berita::orderBy(DB::raw('RAND()'))
         ->take(4)
         ->get()->toJson();
         Storage::put('json/home/berita_pilihan.json',  $berita_pilihan);
@@ -62,14 +61,14 @@ class HomeController extends Controller
         
         $olahraga = Berita::where('kategori','olahraga')
         ->orderBy('time', 'desc')
-        ->take(4)
+        ->take(3)
         ->get()
         ->toJson();
         Storage::put('json/home/olahraga.json',  $olahraga);
         
         $politik = Berita::where('kategori','politik')
         ->orderBy('time', 'desc')
-        ->take(4)
+        ->take(3)
         ->get()
         ->toJson();
         Storage::put('json/home/politik.json',  $politik);
