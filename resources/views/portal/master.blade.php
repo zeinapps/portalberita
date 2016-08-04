@@ -12,8 +12,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif" />
+<meta name="description" content="@if(isset($data['konten'])){{str_limit( strip_tags($data['konten']), $limit = 200, $end = '...')}}@else{{'Portal Berita Dunia'}}@endif">
+<meta property="og:title" content="@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif"/>
+<meta property="og:url" content="{{Request::fullUrl()}}"/>
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="7 Ready"/>
+<meta property="og:image" content="@if(isset($data['img_tumb'])){{$data['img_tumb']}}@else{{''}}@endif" />
+<meta property="og:description" content="@if(isset($data['konten'])){{str_limit( strip_tags($data['konten']), $limit = 200, $end = '...')}}@else{{'Portal Berita Dunia'}}@endif"/>
 <!--webfont-->
-
+<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<!-- Custom Theme files -->
+		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<!-- header-section-starts -->
@@ -72,9 +81,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			
 		
-		<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
-		<!-- Custom Theme files -->
-		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+		
 		<!-- Custom Theme files -->
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
 			

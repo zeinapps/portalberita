@@ -86,7 +86,7 @@ a.btn{color:#666;text-align:center;text-decoration:none;}
 .main-title-head a{float:right;text-decoration:none;color:#fff;background:#cf0000;text-transform:uppercase;font-size:0.7em;padding:3px 8px;margin-top:8px;}
 .world-news-grid p{color:#202021;font-size:0.95em;font-weight:normal;line-height:1.5em;margin:3px 0 8px 0;}
 .world-news-grid a{color:#cf0000;font-weight:bold;font-size:0.875em;text-transform:uppercase;text-decoration:none;}
-a.title{color:#202021;font-size:1em;font-weight:bold;margin-top:10px;text-transform:lowercase;display:block;text-decoration:none;}
+a.title{color:#202021;font-size:1em;font-weight:bold;margin-top:10px;display:block;text-decoration:none;}
 a.title:hover{color:#cf0000;}
 .latest-articles{margin:2em 0;}
 .desk-grid h3{color:#202021;font-size:1.6em;font-weight:400;word-spacing:3px;font-family:'bebasregular';border-bottom:4px solid #cf0000;margin-bottom:1em;padding-bottom:4px;}
