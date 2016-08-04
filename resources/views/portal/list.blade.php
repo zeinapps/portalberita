@@ -13,7 +13,6 @@ a.title {
     font-size: 1em;
     font-weight: bold;
     margin-top: 10px;
-    text-transform: lowercase;
     display: block;
     text-decoration: none;
 	

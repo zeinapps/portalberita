@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta property="og:url" content="{{Request::fullUrl()}}"/>
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="7 Ready"/>
-<meta property="og:image" content="@if(isset($data['img_tumb'])){{$data['img_tumb']}}@else{{''}}@endif" />
+<meta property="og:image" content="@if(isset($data['img'])){{$data['img']}}@else{{''}}@endif" />
 <meta property="og:description" content="@if(isset($data['konten'])){{str_limit( strip_tags($data['konten']), $limit = 200, $end = '...')}}@else{{'Portal Berita Dunia'}}@endif"/>
 <!--webfont-->
 <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
