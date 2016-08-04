@@ -176,7 +176,15 @@ class HomeController extends Controller
        
         $query->views = $query->views+1;
         $query->save();
+		
+		$terkait = Berita::whereNotIn('id',[$query->id])
+		->where('kategori',$query->kategori)
+		->orderBy(DB::raw('RAND()'))
+		->take(4)
+        ->get();
+		
         $data = [
+            'terkait' => $terkait,
             'data' => $query,
 			'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
         ];

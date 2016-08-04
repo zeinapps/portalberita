@@ -1,7 +1,7 @@
 			
 				<div class="col-md-3 side-bar">
 				<div class="might">
-					<a href=""><img src="/images/iklan.jpg" class="img-responsive" alt=""> </a>
+					<a target="_blank"href="https://play.google.com/store/apps/details?id=zein.apps.cekoperator"><img src="/images/iklan.png" class="img-responsive" alt=""> </a>
 				</div>
 				
 				<div class="popular mpopular">

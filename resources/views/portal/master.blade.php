@@ -7,11 +7,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>7ready.com</title>
+<title>@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
+<meta name="keywords" content="@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif" />
 <!--webfont-->
 
 </head>
