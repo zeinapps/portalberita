@@ -106,9 +106,26 @@ class HomeController extends Controller
     
 	public function kategori(Request $request, $kategori) {
 	
-		$query = Berita::where('kategori',$kategori)
-        ->orderBy('time', 'desc')
-        ->paginate(12);
+		$query = null;
+		
+		if($kategori == 'lainnya'){
+			$kate = ['berita','News','internasional','Bbc-world','teknologi','Tekno','hiburan','Entertainment','ekonomi','olahraga','Nasional','politik','Gaya Hidup'];
+			$query = Berita::whereNotIn('kategori',$kate);
+		}else{
+			$query = Berita::where('kategori',$kategori);
+			if(strtolower($kategori) == 'berita' ){
+				$query = $query->orWhere('kategori', 'News');
+			}else if(strtolower($kategori) == 'internasional' ){
+				$query = $query->orWhere('kategori', 'Bbc-world');
+			}else if(strtolower($kategori) == 'teknologi' ){
+				$query = $query->orWhere('kategori', 'Tekno');
+			}else if(strtolower($kategori) == 'hiburan' ){
+				$query = $query->orWhere('kategori', 'Entertainment');
+			}
+		}
+		
+		$query = $query->orderBy('time', 'desc')
+		->paginate(12);
 		
 		$Data = $query->toArray();
 		$data = [

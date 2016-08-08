@@ -57,14 +57,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<span class="menu"></span>
 			<div class="menu-strip">
 				<ul>           
-					<li><a href="/">Home</a></li>
+					<li><a href="/">Beranda</a></li>
 					<li><a href="/berita/kategori">Kabar</a></li>
-					<li><a href="/olahraga/kategori">Olah raga</a></li>
-					<li><a href="/internasional/kategori">Internasional</a></li>
-					<li><a href="/politik/kategori">Politik</a></li>
+					<li><a href="/internasional/kategori">Dunia</a></li>
 					<li><a href="/Ekonomi/kategori">Ekonomi</a></li>
+					<li><a href="/olahraga/kategori">Olah raga</a></li>
 					<li><a href="/Nasional/kategori">Nasional</a></li>
+					<li><a href="/politik/kategori">Politik</a></li>
+					<li><a href="/Gaya Hidup/kategori">Gaya Hidup</a></li>
+					<li><a href="/teknologi/kategori">Teknologi</a></li>
 					<li><a href="/Hiburan/kategori">Hiburan</a></li>
+					<li><a href="/lainnya/kategori">Lainnya</a></li>
 				</ul>
 			</div>
 			

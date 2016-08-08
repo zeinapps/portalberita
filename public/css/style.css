@@ -71,7 +71,7 @@ a.btn{color:#666;text-align:center;text-decoration:none;}
 .search input[type="submit"]{background:url('../images/sprit-1.png') no-repeat 1px 1px #202021;border:none;cursor:pointer;position:absolute;outline:none;top:0px;right:-1px;width:32px;height:32px;}
 .menu-strip{background:#070808;margin:1em 0;padding:1em 0em 0.8em 0px;}
 .menu-strip ul li{display:inline-block;}
-.menu-strip ul li a{color:#fff;font-size:1.1em;font-weight:400;font-family:'bebasregular';text-decoration:none;padding:1.1em 1.5533555em 0.9em;}
+.menu-strip ul li a{color:#fff;font-size:1.1em;font-weight:400;font-family:'bebasregular';text-decoration:none;padding:1.1em 1.2em 0.9em;}
 .menu-strip ul li:last-child{text-align:right;}
 .menu-strip ul li a:hover{background:#cf0000;color:#fff;}
 .total-news{padding:0;}
