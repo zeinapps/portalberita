@@ -33,13 +33,16 @@ class HomeController extends Controller
         ->get()->toJson();
         Storage::put('json/home/berita_pilihan.json',  $berita_pilihan);
 
-        $berita_terbaru = Berita::orderBy('time', 'desc')
+        $berita_terbaru = Berita::where('kategori','berita')
+		->orWhere('kategori', 'news')
+		->orderBy('time', 'desc')
         ->take(3)
         ->get()
         ->toJson();
         Storage::put('json/home/berita_terbaru.json',  $berita_terbaru);
         
-        $berita = Berita::where('kategori','berita')
+        $berita = Berita::where('kategori','teknologi')
+		->orWhere('kategori', 'Tekno')
         ->orderBy('time', 'desc')
         ->take(3)
         ->get()

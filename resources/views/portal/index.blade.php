@@ -63,7 +63,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
             <div class="left-posts">
                 <div class="world-news">
                     <div class="main-title-head">
-                        <h3>Info Terbaru</h3>
+                        <h3>Berita Terbaru</h3>
                         <a class="more" href="/terbaru">Selengkapnya  +</a>
                         <div class="clearfix"></div>
                     </div>
@@ -82,7 +82,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                 </div>
                 <div class="latest-articles">
                     <div class="main-title-head">
-                        <h3>Berita</h3>
+                        <h3>Teknologi</h3>
                         <a class="more" href="/berita/kategori">Selengkapnya  +</a>
                         <div class="clearfix"></div>
                     </div>
