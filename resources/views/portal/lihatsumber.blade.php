@@ -25,14 +25,14 @@ a.title {
 					<div class="left-posts" style="width:100%;">
 						<div class="world-news">
 							<div class="main-title-head">
-								<h3>from   around   the   world</h3>
+								<h3>Link Sumber</h3>
 								<div class="clearfix"></div>
 							</div>
 		<div class="raw">
 
             <div id="countdown" class="alert alert-danger count-down" style="text-align:center;">
                 <div id="link_keluar" class="download-buttons" style="display:none;">
-                    <a  class="btn btn-danger" href="#" style="color: #fff;background-color: #d9534f;">Klik Disini</a>
+                    <a target="_blank"  class="btn btn-danger" href="{{ $data->url }}" style="color: #fff;background-color: #d9534f;">Klik Disini</a>
                 </div>
 
             </div>
@@ -59,34 +59,20 @@ a.title {
                     second++;
                 }, 1000);
             }
-        </script>
+        </script><h2>Berita Terkait:</h2><br>
 							<div class="row world-news-grids">
-								<div class="col-lg-3" style="margin-bottom:20px;">
-									<img src="images/n1.jpg" alt="" style="width:100%;" />
-									<a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-									<p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-									<a href="singlepage.html">Read More</a>
-								</div>
-								<div class="col-lg-3" style="margin-bottom:20px;">
-									<img src="images/n1.jpg" alt="" style="width:100%;" />
-									<a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-									<p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-									<a href="singlepage.html">Read More</a>
-								</div>
-								<div class="col-lg-3" style="margin-bottom:20px;">
-									<img src="images/n1.jpg" alt="" style="width:100%;" />
-									<a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-									<p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-									<a href="singlepage.html">Read More</a>
-								</div>
-								<div class="col-lg-3" style="margin-bottom:20px;">
-									<img src="images/n1.jpg" alt="" style="width:100%;" />
-									<a href="singlepage.html" class="title">Lorem ipsum dolor sit amet, consectetur </a>
-									<p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-									<a href="singlepage.html">Read More</a>
-								</div>
+								
+								@foreach($terkait as $item)
 								
 								
+								<div class="col-lg-3" style="margin-bottom:20px;">
+									<img src="{{ $item['img_tumb'] }}" alt="{{ $item['title'] }}" style="width:100%;" />
+									<a href="/{{ $item['time'] }}/detil/{{ $item['title'] }}" class="title">{{ $item['title'] }}</a>
+									<p>{{  str_limit( strip_tags($item['konten']), $limit = 100, $end = '...') }}</p>
+									<a href="/{{ $item['time'] }}/detil/{{ $item['title'] }}">Read More</a>
+								</div>
+								
+								@endforeach
 								<div class="clearfix"></div>
 							</div>
 						</div>

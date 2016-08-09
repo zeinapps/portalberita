@@ -6,6 +6,11 @@
 	<div class="grids">
 		<div class="msingle-grid box">
 			<div class="grid-header">
+			<ul class="bredcrumb">
+				<li><a href="/">Beranda /</a></li>
+				<li><a href="/{{ $data->kategori }}/kategori"> {{ $data->kategori }} / </a></li>
+				<li> {{ $data->title }}</li>
+				</ul>
 				<h1>{{ $data->title }}</h1>
 				<!-- AddThis Button BEGIN -->
 
@@ -13,6 +18,7 @@
 				<ul>
 				<li><span>Post oleh {{ $data->penulis }} pada {{ $data->waktu }}</span></li>
 				</ul>
+				
 			</div>
 			
 			<div class="singlepage">
@@ -32,7 +38,7 @@
 							
 							sumber: {{ $data->sumber }}
 							<br>
-							link: <a href="{{ $data->url }}" target="_blank">klik disini</a>
+							link: <a href="/{{ $data->id }}/lihatsumber/{{ $data->kategori }}" >klik disini</a>
 							<div class="clearfix"> </div>
 						</div><br><h2>Berita Terkait</h2>
 						<div class="row">

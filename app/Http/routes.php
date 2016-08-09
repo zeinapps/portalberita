@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index');
 Route::get('/generatejsonhome', 'HomeController@generateJsonHome');
 Route::get('/{time}/detil/{title}', 'HomeController@show');
+Route::get('/{id}/lihatsumber/{kategori}', 'HomeController@lihatsumber');
 Route::get('/{kategori}/kategori', 'HomeController@kategori');
 Route::get('/terbaru', 'HomeController@terbaru');
 Route::get('/terpopuler', 'HomeController@terpopuler');

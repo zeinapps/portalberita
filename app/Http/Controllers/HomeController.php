@@ -202,6 +202,30 @@ class HomeController extends Controller
         return view('portal.single', $data);
         
     }
+	
+	
+    public function lihatsumber(Request $request, $id, $kategori) {
+        $query = Berita::where('id',$id)->first();
+        
+        if(!$query){
+            return redirect('/');
+        }
+       
+        		
+		$terkait = Berita::whereNotIn('id',[$id])
+		->where('kategori',$kategori)
+		->orderBy(DB::raw('RAND()'))
+		->take(8)
+        ->get();
+		
+        $data = [
+            'terkait' => $terkait,
+            'data' => $query,
+			'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+        ];
+        return view('portal.lihatsumber', $data);
+        
+    }
     
     public function store(Request $request) {
         $redirect_error = url()->previous();
