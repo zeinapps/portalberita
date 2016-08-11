@@ -98,7 +98,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                         <div class="clearfix"></div>
                     </div>
                 </div>
-                
+									
                 <div class="tech-news">
                     <div class="main-title-head">
                         <h3>internasional</h3>

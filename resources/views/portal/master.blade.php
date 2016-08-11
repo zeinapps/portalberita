@@ -30,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="news-paper">
 			<div class="header">
 				<div class="header-left">
-					<div class="logo">
+					<div class="logo" style="float: left;">
 						<a href="/">
 						<h6>Portal Berita Dunia</h6>
 							<h1>7Ready<span>.com</span></h1>
@@ -38,7 +38,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				</div>
 				<div class="social-icons">
-					
 
 				</div>
 				<div class="clearfix"></div>
@@ -167,7 +166,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         });
                     </script>
                     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 		</div>
 	</div>
 </body>

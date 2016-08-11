@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Berita;
 use DB;
 use Storage;
+use Request;
 
 class HomeController extends Controller
 {
@@ -187,9 +188,14 @@ class HomeController extends Controller
         if(!$query){
             return redirect('/');
         }
-       
-        $query->views = $query->views+1;
-        $query->save();
+       $ip = Request::ip();
+	   if( !($ip == '66.249.71.210' || $ip == '66.249.79.147') ){
+			$query->views = $query->views+1;
+			$query->save();
+			
+			Storage::prepend( 'ip.txt', $ip );
+	   }
+        
 		
 		$terkait = Berita::whereNotIn('id',[$query->id])
 		->where('kategori',$query->kategori)
