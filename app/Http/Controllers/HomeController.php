@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Berita;
 use DB;
 use Storage;
-use Request;
+//use Request;
+
 
 class HomeController extends Controller
 {
@@ -146,6 +147,7 @@ class HomeController extends Controller
 		$query = Berita::orderBy('time', 'desc');
 		$title = 'Berita Terbaru';
 		$q= '';
+		
 		if($request->q){
             $query = $query->where('title','like','%' .$request->q. '%')
                     ->orWhere('konten','like','%' .$request->q. '%');
@@ -188,8 +190,9 @@ class HomeController extends Controller
         if(!$query){
             return redirect('/');
         }
-       $ip = Request::ip();
-	   if( !($ip == '66.249.71.210' || $ip == '66.249.79.147') ){
+       $ip = \Illuminate\Support\Facades\Request::ip();
+	   
+	   if( !(substr($ip , 0, 3 ) == '66.') ){
 			$query->views = $query->views+1;
 			$query->save();
 			
