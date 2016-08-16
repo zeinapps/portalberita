@@ -41,7 +41,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                 <!-- Slideshow 3 -->
                 <ul class="conference-rslide" id="conference-slider">
                     @foreach ($berita_pilihan as $item)                                                                    
-                    <li><img src="{{ $item->img }}" alt="" >
+                    <li><img width="100%" src="{{ $item->img }}" alt="{{ $item->title }}" >
                         <div class="breaking-news-title">
                             <a href="/{{ $item->time }}/detil/{{ $item->title }}">{{ $item->title }}</a>
                         </div>
@@ -51,7 +51,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                 <!-- Slideshow 3 Pager -->
                 <ul id="slider3-pager">
                     @foreach ($berita_pilihan as $item)                                                                    
-                        <li><a href="#"><img src="{{ $item->img_tumb }}" alt="" style="height:80px"></a></li>
+                        <li><a href="#"><img src="{{ $item->img_tumb }}" alt="" ></a></li>
                     @endforeach
                     
                 </ul>
@@ -64,13 +64,13 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                 <div class="world-news">
                     <div class="main-title-head">
                         <h3>Berita Terbaru</h3>
-                        <a class="more" href="/terbaru">Selengkapnya  +</a>
+                        <a class="more" href="/terbaru">Selengkapnya</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="world-news-grids">
                         @foreach ($berita_terbaru as $item)   
                             <div class="world-news-grid">
-                                <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" style="height:112px;width:180px;"/>
+                                <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" />
                                 <a href="/{{ $item->time }}/detil/{{ $item->title }}" class="title">{{ $item->title }}</a>
                                 <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }} </p>
                                 <a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a>
@@ -83,13 +83,13 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                 <div class="latest-articles">
                     <div class="main-title-head">
                         <h3>Teknologi</h3>
-                        <a class="more" href="/Teknologi/kategori">Selengkapnya  +</a>
+                        <a class="more" href="/Teknologi/kategori">Selengkapnya</a>
                         <div class="clearfix"></div>
                     </div>
                     <div class="world-news-grids">
                         @foreach ($berita as $item)   
                         <div class="world-news-grid">
-                            <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}" style="height:112px;width:180px;" />
+                            <img src="{{ $item->img_tumb }}" alt="{{ $item->title }}"  />
                             <a href="/{{ $item->time }}/detil/{{ $item->title }}" class="title">{{ $item->title }}</a>
                             <p>{{  str_limit( strip_tags($item->konten), $limit = 100, $end = '...') }} </p>
                             <a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a>
@@ -102,7 +102,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                 <div class="tech-news">
                     <div class="main-title-head">
                         <h3>internasional</h3>
-                        <a class="more" href="/internasional/kategori">Selengkapnya  +</a>
+                        <a class="more" href="/internasional/kategori">Selengkapnya</a>
                         <div class="clearfix"></div>
                     </div>	 
                     <div class="tech-news-grids">
@@ -128,7 +128,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                         <p><a href="/{{ $item->time }}/detil/{{ $item->title }}">Read More</a><span>{{ date('d/m/Y H:i', $item->time+(7*3600) ) }}</span></p>
                     </div>
                     @endforeach
-                    <a class="more" href="/politik/kategori">Selengkapnya  +</a>
+                    <a class="more" href="/politik/kategori">Selengkapnya</a>
                 </div>
                 <div class="editorial">
                     <h3>olahraga</h3>
@@ -138,7 +138,7 @@ h5.breaking{color:#fff;background:#cf0000;padding:6px 0;font-size:0.95em;font-we
                         <a href="/{{ $item->time }}/detil/{{ $item->title }}">{{ $item->title }}</a>
                     </div>
                     @endforeach
-					<a class="more" href="/olahraga/kategori">Selengkapnya  +</a>
+					<a class="more" href="/olahraga/kategori">Selengkapnya</a>
                 </div>
             </div>
             <div class="clearfix"></div>	

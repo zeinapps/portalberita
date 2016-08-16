@@ -34,7 +34,7 @@ a.title {
 									<div class="row" >
 								@endif
 								<div class="col-lg-3" style="margin-bottom:20px;">
-									<img src="{{ $item['img_tumb'] }}" alt="{{ $item['title'] }}" style="width:90%; height:90px;" />
+									<img src="{{ $item['img_tumb'] }}" alt="{{ $item['title'] }}" width="100%" />
 									<a href="/{{ $item['time'] }}/detil/{{ $item['title'] }}" class="title">{{ $item['title'] }}</a>
 									<p>{{  str_limit( strip_tags($item['konten']), $limit = 100, $end = '...') }}</p>
 									<a href="/{{ $item['time'] }}/detil/{{ $item['title'] }}">Read More</a>
