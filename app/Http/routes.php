@@ -20,6 +20,8 @@ Route::get('/terbaru', 'HomeController@terbaru');
 Route::get('/terpopuler', 'HomeController@terpopuler');
 Route::get('/api/views', 'HomeController@views');
 
+Route::get('/api/index', 'ApiController@index');
+
 
 //Route::get('/', function () {
 //    return view('portal.index');
