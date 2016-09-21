@@ -7,13 +7,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif</title>
+<title>{{ $title }}</title>
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif" />
+<meta name="keywords" content="{{ $title }}" />
 <meta name="description" content="@if(isset($data['konten'])){{str_limit( strip_tags($data['konten']), $limit = 200, $end = '...')}}@else{{'Portal Berita Dunia'}}@endif">
-<meta property="og:title" content="@if(isset($data['title'])){{$data['title']}}@else{{'7READY.COM'}}@endif"/>
+<meta property="og:title" content="{{ $title }}"/>
 <meta property="og:url" content="{{Request::fullUrl()}}"/>
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="7 Ready"/>
@@ -22,7 +22,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--webfont-->
 <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
 		<!-- Custom Theme files -->
-		<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 	<!-- header-section-starts -->
@@ -82,11 +82,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 			
-		
-		
-		<!-- Custom Theme files -->
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
-			
 		<script src="/js/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.leanModal.min.js"></script>
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -100,6 +96,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				});
 			</script>
 			<!-- script for menu -->
+		@if(isset($isHome))
+                    <!-- Custom Theme files -->
+			
+		
 		<script src="js/responsiveslides.min.js"></script>
             <script>
                 // You can also use "$(window).load(function() {"
@@ -165,8 +165,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                         });
                     </script>
-                    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
-					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                @endif
+		
+                    <!--<script type="text/javascript" src="js/jquery.flexisel.js"></script>-->
+					
 		</div>
 	</div>
 </body>
