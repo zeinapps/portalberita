@@ -25,6 +25,9 @@ Route::get('/api/trending', 'ApiController@trending');
 Route::get('/api/{kategori}/kategori', 'ApiController@kategori');
 Route::get('/api/{time}/detil', 'ApiController@show');
 
+Route::get('ebarca/api/index', 'ApiEbarcaController@index');
+Route::get('ebarca/api/{time}/detil', 'ApiEbarcaController@show');
+
 
 //Route::get('/', function () {
 //    return view('portal.index');

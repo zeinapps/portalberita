@@ -104,6 +104,8 @@ class HomeController extends Controller
             'olahraga' => json_decode(Storage::get('json/home/olahraga.json')),
             'galeri' => json_decode(Storage::get('json/home/galeri.json')),
             'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+	    'title' => '7ready.com',
+            'isHome' => true,
         ];
         return view('portal.index', $data);
         
@@ -137,8 +139,8 @@ class HomeController extends Controller
 			'data' => $Data['data'],
 			'pagination' => $query,
 			'title' => 'Kategori: '.$kategori,
-            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
-        ];
+                        'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+                    ];
 		return view('portal.list', $data);
 	}
 	
@@ -192,7 +194,18 @@ class HomeController extends Controller
         }
        $ip = \Illuminate\Support\Facades\Request::ip();
 	   
-	   if( !(substr($ip , 0, 3 ) == '66.') ){
+	   if( !(substr($ip , 0, 3 ) == '66.' || 
+	   substr($ip , 0, 3 ) == '46.' || 
+	   substr($ip , 0, 3 ) == '62.' || 
+	   substr($ip , 0, 3 ) == '51.' || 
+	   substr($ip , 0, 3 ) == '69.' || 
+	   substr($ip , 0, 3 ) == '83.' || 
+	   substr($ip , 0, 4 ) == '195.' || 
+
+	   $ip  == '36.79.232.105' || 
+
+	   substr($ip , 0, 4 ) == '173.' || 
+	   substr($ip , 0, 2 ) == '5.') ){
 			$query->views = $query->views+1;
 			$query->save();
 			
@@ -206,10 +219,17 @@ class HomeController extends Controller
 		->take(4)
         ->get();
 		
+        $query->konten = str_replace('</p>', "</p>\n\n ", $query->konten);
+        $query->konten = str_replace('<br>', "<br>\n", $query->konten);
+        $query->konten = strip_tags($query->konten);
+        $query->konten = trim(str_replace("  "," ",$query->konten));
+        $query->konten = str_replace('\n', "<br>", $query->konten);
+        
         $data = [
             'terkait' => $terkait,
             'data' => $query,
-			'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+            'title' => $query->title,
         ];
         return view('portal.single', $data);
         
@@ -233,7 +253,8 @@ class HomeController extends Controller
         $data = [
             'terkait' => $terkait,
             'data' => $query,
-			'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+            'sidebar' => json_decode(Storage::get('json/sidebar/sidebar.json')),
+            'title' => $query->title,
         ];
         return view('portal.lihatsumber', $data);
         
