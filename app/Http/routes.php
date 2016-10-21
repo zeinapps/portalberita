@@ -26,8 +26,12 @@ Route::get('/api/{kategori}/kategori', 'ApiController@kategori');
 Route::get('/api/{time}/detil', 'ApiController@show');
 
 Route::get('ebarca/api/index', 'ApiEbarcaController@index');
+Route::get('ebarca/api/index/{klub}', 'ApiEbarcaController@indexklub');
 Route::get('ebarca/api/{time}/detil', 'ApiEbarcaController@show');
 
+
+Route::get('ebarca/api/{tag}/jadwal', 'ApiEbarcaController@jadwal');
+Route::get('ebarca/api/{tag}/hasil', 'ApiEbarcaController@hasil');
 
 //Route::get('/', function () {
 //    return view('portal.index');

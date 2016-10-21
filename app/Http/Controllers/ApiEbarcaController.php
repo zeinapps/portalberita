@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ebarcaberita;
+use App\Ebarcajadwal;
 use DB;
 use Storage;
 //use Request;
@@ -36,6 +37,15 @@ class ApiEbarcaController extends Controller
         
     }
     
+    public function indexklub(Request $request, $klub) {
+    
+        $query = Ebarcaberita::select('id','title','time','img_tumb','penulis','sumber','url','kategori','waktu')
+                ->where('tag','like',"%$klub%");
+	$query = $query->orderBy('time', 'desc')->paginate(12);
+        return $this->sendData($query);
+        
+    }
+    
 	
     public function show(Request $request, $time) {
         $query = Ebarcaberita::where('time',$time)->first();
@@ -58,6 +68,26 @@ class ApiEbarcaController extends Controller
 			'terkait' => [],
         ];
        return $this->sendData($data);
+        
+    }
+    
+    public function jadwal(Request $request, $tag) {
+        $query = Ebarcajadwal::where('tag',$tag)
+                ->where('skor_tim','-')
+                ->orderBy('time', 'asc')
+                ->get();
+
+       return $this->sendData($query);
+        
+    }
+    
+    public function hasil(Request $request, $tag) {
+        $query = Ebarcajadwal::where('tag',$tag)
+                ->where('skor_tim','!=','-')
+                ->orderBy('time', 'desc')
+                ->get();
+
+       return $this->sendData($query);
         
     }
 	

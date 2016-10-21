@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ebarcaberita extends Model {
 
     protected $table = 'ebarca_berita';
-    protected $fillable = ['id','url', 'title','konten','kategori','penulis','sumber','waktu','time','img','img_tumb','is_pilihan'];
+    protected $fillable = ['id','url', 'title','konten','kategori','penulis','sumber','waktu','time','img','img_tumb','is_pilihan','tag'];
     protected $primaryKey = 'id';
     public $timestamps = false;
 
