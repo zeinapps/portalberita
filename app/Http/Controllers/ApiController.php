@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Berita;
+use App\View;
 use DB;
 use Storage;
 //use Request;
@@ -97,6 +98,24 @@ class ApiController extends Controller
         
     }
 	
-	
+     public function updateview(Request $request) {
+        $time = time();
+        $tgl = date("Y-m-d", $time);
+        $view = null;
+        if($request->ajax()){
+            $view = View::find($tgl);
+            if(!$view){
+                $view = View::create(['tgl'=>$tgl,'jumlah'=>1]);
+            }else{
+                View::where('tgl',$tgl)
+                        ->update(['jumlah'=> $view->jumlah+1] );
+            }
+        }
+        
+        $data = [
+                'views' => $view,
+        ];
+        return response()->json($data);
+    }
     
 }

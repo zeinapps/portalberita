@@ -24,6 +24,7 @@ Route::get('/api/index', 'ApiController@index');
 Route::get('/api/trending', 'ApiController@trending');
 Route::get('/api/{kategori}/kategori', 'ApiController@kategori');
 Route::get('/api/{time}/detil', 'ApiController@show');
+Route::get('/api/updateview', 'ApiController@updateview');
 
 Route::get('ebarca/api/index', 'ApiEbarcaController@index');
 Route::get('ebarca/api/index/{klub}', 'ApiEbarcaController@indexklub');

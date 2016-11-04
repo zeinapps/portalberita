@@ -172,4 +172,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 </body>
+<script>
+    window.onload = function () {
+        $.get("/api/updateview", function(data, status){
+
+        });
+    };
+</script>
 </html>
